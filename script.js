@@ -32,22 +32,16 @@ function showBooks (library) {
             if (book.hasOwnProperty(prop)) //Only allows own properties
             {
                 const div = document.createElement('div');
-                // Defines hader text as name of properties and data as values
-                div.textContent = `${prop}: ${book[prop]}`;
+                prop === 'title' ? div.textContent = `${book[prop]}` : div.textContent = `${prop}: ${book[prop]}`;  //If the property is title then only displays it's value
 
-                if (prop === 'title') {
-                    div.textContent = `${book[prop]}`;
-                }
-                
                 if (prop === 'read' || prop === 'title') {
                     div.setAttribute('class', `${prop}`)
                 }
-                //Appends both th and td to tr and then append tr to table
                 card.appendChild(div);
             }
         }
 
-        // Create bottom row to set buttons
+        //Create div to append both buttons
         const div = document.createElement('div');
         const deleteButton = document.createElement('button');
         const toggleButton = document.createElement('button');
@@ -61,7 +55,7 @@ function showBooks (library) {
 
         deleteButton.addEventListener('click', (e) => {
             let index = Array.prototype.indexOf.call(container.children, e.target.parentNode.parentNode);
-            e.target.parentNode.parentNode.remove();    //The parent of the button is an tr and it parent its table
+            e.target.parentNode.parentNode.remove();    //Search for the grandfather (.card) of the button
             myLibrary.splice(index, 1);
         })
         
@@ -73,7 +67,7 @@ function showBooks (library) {
                 statusRead.textContent = 'Not readed';
                 myLibrary[index].read = statusRead.textContent;
             }
-            
+
             else {
                 statusRead.textContent = 'Readed';
                 myLibrary[index].read = statusRead.textContent;
