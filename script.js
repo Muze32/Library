@@ -15,11 +15,12 @@ function addBookToLibrary (book) {
     myLibrary.push(book);
 }
 
-const cote = new Book ('classroom of the elite', 'kinugasa', 'more than 1 thousand', 'not read yet');
-const roshidere = new Book ('Roshidere', 'IDK lol', '500', 'almost finished');
+let book = new Book ('classroom of the elite', 'kinugasa', 'more than 1 thousand', 'not read yet');
+addBookToLibrary(book);
 
-addBookToLibrary(cote);
-addBookToLibrary(roshidere);
+book = new Book ('Roshidere', 'IDK lol', '500', 'almost finished');
+
+addBookToLibrary(book);
 
 const body = document.querySelector('body');
 
@@ -27,7 +28,6 @@ function showBooks (library) {
     for (book of library) {
         const table = document.createElement('table');
         
-        console.log('new book');
         for (prop in book) {
             if (book.hasOwnProperty(prop)) //Only allows own properties
             {
@@ -54,8 +54,14 @@ showBooks(myLibrary);
 /**********ADD NEW BOOK***************/
 
 const dialog = document.querySelector('dialog');
-const showButton = document.querySelector('.show');
-const closeButton = document.querySelector('.close');
+const showButton = document.querySelector('#show');
+const closeButton = document.querySelector('#close');
+const submitButton = document.querySelector('#submit');
+
+const titleName = document.querySelector('#title_name');
+const authorName = document.querySelector('#author_name');
+const numberPages = document.querySelector('#pages');
+const read = document.querySelector('#read');
 
 showButton.addEventListener('click', () => {
     dialog.showModal();
@@ -63,4 +69,9 @@ showButton.addEventListener('click', () => {
 
 closeButton.addEventListener('click', () => {
     dialog.close();
+})
+
+submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(titleName.value);
 })

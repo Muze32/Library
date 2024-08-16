@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <button class="show">ADD NEW BOOK</button>
+    <button id="show">ADD NEW BOOK</button>
     <dialog>
         <form action="">
             <div>
@@ -22,15 +22,15 @@
             </div>
             <div>
                 <label for="pages">Number of pages: </label>
-                <input type="text" id="pages" name="number_pages">
+                <input type="number" id="pages" name="number_pages" min="0">
             </div>
             <div>
                 <label for="read">Current read status: </label>
                 <input type="text" id="read" name="read_status">
-            </div>       
+            </div>
+            <button type="submit" id="submit">SUBMIT BOOK</button>       
         </form>
-        <div>Hoshimachi Suisei</div>
-        <button class="close" type="button">CLOSE</button>
+        <button id="close" type="button">CLOSE</button>
     </dialog>
 </body>
 </html>

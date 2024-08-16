@@ -24,3 +24,10 @@ td {
 table {
     margin-top: 1rem;
 }
+
+/*****FORM*******/
+
+label {
+    display: inline-block;
+    width: 150px;
+}
