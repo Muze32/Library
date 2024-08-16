@@ -25,39 +25,39 @@ function showBooks (library) {
     container.textContent = '';
 
     for (book of library) {
-        const table = document.createElement('table');
-        
+        const card = document.createElement('div');
+        card.setAttribute('class', 'card');
+
         for (prop in book) {
             if (book.hasOwnProperty(prop)) //Only allows own properties
             {
-                const row = document.createElement('tr');
-                const data = document.createElement('td');
-                const header = document.createElement('th');
-
+                const div = document.createElement('div');
                 // Defines hader text as name of properties and data as values
-                header.textContent = `${prop}`;
-                data.textContent = `${book[prop]}`;
-                if (prop === 'read') {
-                    data.setAttribute('class', `${prop}`)
+                div.textContent = `${prop}: ${book[prop]}`;
+
+                if (prop === 'title') {
+                    div.textContent = `${book[prop]}`;
+                }
+                
+                if (prop === 'read' || prop === 'title') {
+                    div.setAttribute('class', `${prop}`)
                 }
                 //Appends both th and td to tr and then append tr to table
-                row.appendChild(header);
-                row.appendChild(data);
-                table.appendChild(row);
+                card.appendChild(div);
             }
         }
 
         // Create bottom row to set buttons
-        const row = document.createElement('tr');
+        const div = document.createElement('div');
         const deleteButton = document.createElement('button');
         const toggleButton = document.createElement('button');
 
         deleteButton.textContent = 'Delete Book';
         toggleButton.textContent = 'Toggle read';
-        row.appendChild(deleteButton);
-        row.appendChild(toggleButton);
-        table.appendChild(row);
-        container.appendChild(table);
+        div.appendChild(deleteButton);
+        div.appendChild(toggleButton);
+        card.appendChild(div);
+        container.appendChild(card);
 
         deleteButton.addEventListener('click', (e) => {
             let index = Array.prototype.indexOf.call(container.children, e.target.parentNode.parentNode);
@@ -67,12 +67,13 @@ function showBooks (library) {
         
         toggleButton.addEventListener('click', (e) => {
             let index = Array.prototype.indexOf.call(container.children, e.target.parentNode.parentNode);
-
             let statusRead = e.target.parentNode.parentNode.querySelector('.read');
+
             if (statusRead.textContent === 'Readed') {
                 statusRead.textContent = 'Not readed';
                 myLibrary[index].read = statusRead.textContent;
             }
+            
             else {
                 statusRead.textContent = 'Readed';
                 myLibrary[index].read = statusRead.textContent;

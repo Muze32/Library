@@ -8,30 +8,20 @@ body {
     gap: 5rem;
 }
 
-table{
+.card {
     border: 1px solid white;
-    border-collapse: collapse;
 }
 
-th {
+.card > * {
     background-color: red;
-    color: black;
-    width: 100px;
+    border: 1px solid black;
 }
 
-td {
-    background-color: rgb(223, 117, 69);
-    color: black;
-    width: 200px;
-    text-align: center;
-}
-
-table {
-    margin-top: 1rem;
-}
-
-tr:last-child {
+.card > div:last-child {
     display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    background-color: green;
 }
 
 /*****FORM*******/
