@@ -23,7 +23,6 @@ const container = document.querySelector('#container');
 
 function showBooks (library) {
     container.textContent = '';
-    let i = 0;
 
     for (book of library) {
         const table = document.createElement('table');
@@ -38,7 +37,9 @@ function showBooks (library) {
                 // Defines hader text as name of properties and data as values
                 header.textContent = `${prop}`;
                 data.textContent = `${book[prop]}`;
-
+                if (prop === 'read') {
+                    data.setAttribute('class', `${prop}`)
+                }
                 //Appends both th and td to tr and then append tr to table
                 row.appendChild(header);
                 row.appendChild(data);
@@ -47,27 +48,35 @@ function showBooks (library) {
         }
 
         // Create bottom row to set buttons
-        const bottomRow = document.createElement('tr');
+        const row = document.createElement('tr');
         const deleteButton = document.createElement('button');
         const toggleButton = document.createElement('button');
 
         deleteButton.textContent = 'Delete Book';
-        deleteButton.setAttribute('id', `${i}`);
-        i++;
         toggleButton.textContent = 'Toggle read';
-        bottomRow.appendChild(deleteButton);
-        bottomRow.appendChild(toggleButton);
-        bottomRow.setAttribute('class', 'bottomRow');
-        table.appendChild(bottomRow);
+        row.appendChild(deleteButton);
+        row.appendChild(toggleButton);
+        table.appendChild(row);
         container.appendChild(table);
 
         deleteButton.addEventListener('click', (e) => {
-            e.target.parentNode.parentNode.remove();
-            myLibrary.splice(e.target.id, 1);
+            let index = Array.prototype.indexOf.call(container.children, e.target.parentNode.parentNode);
+            e.target.parentNode.parentNode.remove();    //The parent of the button is an tr and it parent its table
+            myLibrary.splice(index, 1);
         })
         
         toggleButton.addEventListener('click', (e) => {
-            console.log(e.target.parentNode);
+            let index = Array.prototype.indexOf.call(container.children, e.target.parentNode.parentNode);
+
+            let statusRead = e.target.parentNode.parentNode.querySelector('.read');
+            if (statusRead.textContent === 'Readed') {
+                statusRead.textContent = 'Not readed';
+                myLibrary[index].read = statusRead.textContent;
+            }
+            else {
+                statusRead.textContent = 'Readed';
+                myLibrary[index].read = statusRead.textContent;
+            }
         })
     }
 }

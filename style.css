@@ -30,7 +30,7 @@ table {
     margin-top: 1rem;
 }
 
-.bottomRow {
+tr:last-child {
     display: flex;
 }
 
