@@ -50,3 +50,17 @@ function showBooks (library) {
 }
 
 showBooks(myLibrary);
+
+/**********ADD NEW BOOK***************/
+
+const dialog = document.querySelector('dialog');
+const showButton = document.querySelector('.show');
+const closeButton = document.querySelector('.close');
+
+showButton.addEventListener('click', () => {
+    dialog.showModal();
+})
+
+closeButton.addEventListener('click', () => {
+    dialog.close();
+})
