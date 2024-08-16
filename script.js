@@ -17,16 +17,13 @@ function addBookToLibrary (title, author, pages, read) {
 }
 
 addBookToLibrary('classroom of the elite', 'kinugasa', 'more than 1 thousand', 'not read yet');
-
 addBookToLibrary('Roshidere', 'IDK lol', '500', 'almost finished');
 
-const body = document.querySelector('body');
-const container = document.createElement('div');
-body.appendChild(container);
-
+const container = document.querySelector('#container');
 
 function showBooks (library) {
     container.textContent = '';
+    let i = 0;
 
     for (book of library) {
         const table = document.createElement('table');
@@ -48,9 +45,33 @@ function showBooks (library) {
                 table.appendChild(row);
             }
         }
+
+        // Create bottom row to set buttons
+        const bottomRow = document.createElement('tr');
+        const deleteButton = document.createElement('button');
+        const toggleButton = document.createElement('button');
+
+        deleteButton.textContent = 'Delete Book';
+        deleteButton.setAttribute('id', `${i}`);
+        i++;
+        toggleButton.textContent = 'Toggle read';
+        bottomRow.appendChild(deleteButton);
+        bottomRow.appendChild(toggleButton);
+        bottomRow.setAttribute('class', 'bottomRow');
+        table.appendChild(bottomRow);
         container.appendChild(table);
+
+        deleteButton.addEventListener('click', (e) => {
+            e.target.parentNode.parentNode.remove();
+            myLibrary.splice(e.target.id, 1);
+        })
+        
+        toggleButton.addEventListener('click', (e) => {
+            console.log(e.target.parentNode);
+        })
     }
 }
+
 
 showBooks(myLibrary);
 
@@ -74,3 +95,13 @@ closeButton.addEventListener('click', () => {
     dialog.close();
 })
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addBookToLibrary(titleName.value, authorName.value, numberPages.value, read.value);
+    dialog.close();
+    titleName.value = '';
+    authorName.value = '';
+    numberPages.value = '';
+    read.value = '';
+    showBooks(myLibrary);
+})

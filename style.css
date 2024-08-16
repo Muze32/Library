@@ -3,7 +3,12 @@ body {
     color: white;
 }
 
-table, th, td {
+#container {
+    display: flex;
+    gap: 5rem;
+}
+
+table{
     border: 1px solid white;
     border-collapse: collapse;
 }
@@ -23,6 +28,10 @@ td {
 
 table {
     margin-top: 1rem;
+}
+
+.bottomRow {
+    display: flex;
 }
 
 /*****FORM*******/

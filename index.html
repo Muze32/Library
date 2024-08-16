@@ -10,6 +10,7 @@
 
 <body>
     <button id="show">ADD NEW BOOK</button>
+    <div id="container"></div>
     <dialog>
         <form action="">
             <div>
@@ -26,7 +27,10 @@
             </div>
             <div>
                 <label for="read">Current read status: </label>
-                <input type="text" id="read" name="readStatus">
+                <select name="readStatus" id="read">
+                    <option value="Readed" selected>Readed</option>
+                    <option value="Not readed">Not readed</option>
+                </select>
             </div>
             <button type="submit" id="submit">SUBMIT BOOK</button>       
         </form>
