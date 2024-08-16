@@ -11,20 +11,23 @@ Book.prototype.info = function () {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
-function addBookToLibrary (book) { 
+function addBookToLibrary (title, author, pages, read) { 
+    let book = new Book (title, author, pages, read);
     myLibrary.push(book);
 }
 
-let book = new Book ('classroom of the elite', 'kinugasa', 'more than 1 thousand', 'not read yet');
-addBookToLibrary(book);
+addBookToLibrary('classroom of the elite', 'kinugasa', 'more than 1 thousand', 'not read yet');
 
-book = new Book ('Roshidere', 'IDK lol', '500', 'almost finished');
-
-addBookToLibrary(book);
+addBookToLibrary('Roshidere', 'IDK lol', '500', 'almost finished');
 
 const body = document.querySelector('body');
+const container = document.createElement('div');
+body.appendChild(container);
+
 
 function showBooks (library) {
+    container.textContent = '';
+
     for (book of library) {
         const table = document.createElement('table');
         
@@ -45,7 +48,7 @@ function showBooks (library) {
                 table.appendChild(row);
             }
         }
-        body.appendChild(table);
+        container.appendChild(table);
     }
 }
 
@@ -56,7 +59,7 @@ showBooks(myLibrary);
 const dialog = document.querySelector('dialog');
 const showButton = document.querySelector('#show');
 const closeButton = document.querySelector('#close');
-const submitButton = document.querySelector('#submit');
+const form = document.querySelector('form');
 
 const titleName = document.querySelector('#title_name');
 const authorName = document.querySelector('#author_name');
@@ -71,7 +74,3 @@ closeButton.addEventListener('click', () => {
     dialog.close();
 })
 
-submitButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(titleName.value);
-})
