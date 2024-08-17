@@ -9,9 +9,10 @@
 </head>
 
 <body>
+    <h2>Library</h2>
     <button id="show">ADD NEW BOOK</button>
     <div id="container"></div>
-    <dialog>
+    <dialog open>
         <form action="">
             <div>
                 <label for="title">Title: </label>
@@ -32,9 +33,11 @@
                     <option value="Not readed">Not readed</option>
                 </select>
             </div>
-            <button type="submit" id="submit">SUBMIT BOOK</button>       
+            <div class="button-row">
+                <button type="submit" id="submit">SUBMIT BOOK</button>
+                <button id="close" type="button">CLOSE</button>
+            </div>
         </form>
-        <button id="close" type="button">CLOSE</button>
     </dialog>
 </body>
 </html>

@@ -11,15 +11,17 @@ body {
     gap: 5rem;
 }
 
+/******BOOK CARDS*******/
+
 .card {
     border: 1px solid black;
+    border-radius: 10px;
     color: white;
     background-color: #1e293b;
-    border-radius: 10px;
-    width: 350px;
+    width: 370px;
     padding: 3rem;
     display: grid;
-    grid-template-rows: 1fr min-content min-content;
+    grid-template-rows: 1fr;
 }
 
 .card h1 {
@@ -40,6 +42,8 @@ body {
     justify-content: space-between;
     flex-grow: 1;
 }
+
+/****BUTTONS****/
 
 .card button:first-child {
     background-color: red;
@@ -63,4 +67,17 @@ button {
 label {
     display: inline-block;
     width: 150px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+form > div:not(:first-child) {
+    margin-top: 1rem;
+}
+
+dialog {
+    border-radius: 8px;
 }
