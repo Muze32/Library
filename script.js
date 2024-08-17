@@ -31,13 +31,21 @@ function showBooks (library) {
         for (prop in book) {
             if (book.hasOwnProperty(prop)) //Only allows own properties
             {
-                const div = document.createElement('div');
-                prop === 'title' ? div.textContent = `${book[prop]}` : div.textContent = `${prop}: ${book[prop]}`;  //If the property is title then only displays it's value
-
-                if (prop === 'read' || prop === 'title') {
-                    div.setAttribute('class', `${prop}`)
+                let rowInfo = '';
+                if (prop === 'title') {
+                    rowInfo = document.createElement('h2');
+                    rowInfo.textContent = `${book[prop]}`;
                 }
-                card.appendChild(div);
+
+                else {
+                    rowInfo = document.createElement('p');
+                    rowInfo.textContent = `${prop}: ${book[prop]}`;  //If the property is title then only displays it's value
+                }
+
+                if (prop === 'read') {
+                    rowInfo.setAttribute('class', `${prop}`)
+                }
+                card.appendChild(rowInfo);
             }
         }
 
