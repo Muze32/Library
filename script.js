@@ -16,8 +16,7 @@ function addBookToLibrary (title, author, pages, read) {
     myLibrary.push(book);
 }
 
-addBookToLibrary('Classroom of The Elite', 'Kinugasa', '460', 'Not readed');
-addBookToLibrary('Roshidere', 'Sun Sun Sun', '500', 'Readed');
+addBookToLibrary('Alice in Wonderland', 'Lewis Carroll', '96', 'Readed');
 
 const container = document.querySelector('#container');
 
@@ -33,8 +32,15 @@ function showBooks (library) {
             {
                 let rowInfo = '';
                 if (prop === 'Title') {
-                    rowInfo = document.createElement('h1');
+                    rowInfo = document.createElement('h2');
                     rowInfo.textContent = `${book[prop]}`;
+                }
+
+                else if (prop === 'Read') {
+                    rowInfo = document.createElement('p');
+                    rowInfo.textContent = `${book[prop]}`;
+                    rowInfo.setAttribute('class', `${prop}`)
+
                 }
 
                 else {
@@ -42,9 +48,6 @@ function showBooks (library) {
                     rowInfo.textContent = `${prop}: ${book[prop]}`;  //If the property is title then only displays it's value
                 }
 
-                if (prop === 'Read') {
-                    rowInfo.setAttribute('class', `${prop}`)
-                }
                 card.appendChild(rowInfo);
             }
         }
