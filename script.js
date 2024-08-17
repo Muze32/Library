@@ -114,6 +114,5 @@ form.addEventListener('submit', (e) => {
     titleName.value = '';
     authorName.value = '';
     numberPages.value = '';
-    read.value = '';
     showBooks(myLibrary);
 })

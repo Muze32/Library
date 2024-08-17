@@ -10,6 +10,7 @@
 body {
     margin: 0;
     font-family: 'robotoregular';
+    background-color: #EAE7DC;
 }
 
 * {
@@ -19,12 +20,27 @@ body {
 #container {
     display: flex;
     gap: 5rem;
+    padding: 0 3rem;
 }
 
 
-.centered {
+.header { 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+    background-color: #6ec462;
+}
+
+.header > div {
+    display: flex;
+    align-items: center;
+}
+
+#show { 
+    background-color: #EAE7DC;
+}
+#show:hover {
+    background-color: #d6d1c7;
 }
 
 /******BOOK CARDS*******/
@@ -66,9 +82,17 @@ body {
     color: white;
 }
 
+.card button:first-child:hover {
+    background-color: #d72626;
+}
+
 .card button:last-child {
     background-color: #50c150;
     color: white;
+}
+
+.card button:last-child:hover {
+    background-color: #459f45;
 }
 
 button {
