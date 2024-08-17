@@ -1,6 +1,9 @@
 body {
-    background-color: #2b2a33;
-    color: white;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 #container {
@@ -9,19 +12,50 @@ body {
 }
 
 .card {
-    border: 1px solid white;
+    border: 1px solid black;
+    color: white;
+    background-color: #1e293b;
+    border-radius: 10px;
+    width: 350px;
+    padding: 3rem;
+    display: grid;
+    grid-template-rows: 1fr min-content min-content;
 }
 
-.card > * {
-    background-color: red;
-    border: 1px solid black;
+.card h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.card > p {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
 }
 
 .card > div:last-child {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    background-color: green;
+}
+
+.card button:first-child {
+    background-color: red;
+    color: white;
+}
+
+.card button:last-child {
+    background-color: #50c150;
+    color: white;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    cursor: pointer;
 }
 
 /*****FORM*******/

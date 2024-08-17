@@ -1,10 +1,10 @@
 const myLibrary = [];
 
 function Book (title, author, pages, read) {
-    this.title = title; 
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+    this.Title = title; 
+    this.Author = author;
+    this.Pages = pages;
+    this.Read = read;
 }
 
 Book.prototype.info = function () {
@@ -16,8 +16,8 @@ function addBookToLibrary (title, author, pages, read) {
     myLibrary.push(book);
 }
 
-addBookToLibrary('classroom of the elite', 'kinugasa', 'more than 1 thousand', 'not read yet');
-addBookToLibrary('Roshidere', 'IDK lol', '500', 'almost finished');
+addBookToLibrary('Classroom of The Elite', 'Kinugasa', '460', 'Not readed');
+addBookToLibrary('Roshidere', 'Sun Sun Sun', '500', 'Readed');
 
 const container = document.querySelector('#container');
 
@@ -32,8 +32,8 @@ function showBooks (library) {
             if (book.hasOwnProperty(prop)) //Only allows own properties
             {
                 let rowInfo = '';
-                if (prop === 'title') {
-                    rowInfo = document.createElement('h2');
+                if (prop === 'Title') {
+                    rowInfo = document.createElement('h1');
                     rowInfo.textContent = `${book[prop]}`;
                 }
 
@@ -42,7 +42,7 @@ function showBooks (library) {
                     rowInfo.textContent = `${prop}: ${book[prop]}`;  //If the property is title then only displays it's value
                 }
 
-                if (prop === 'read') {
+                if (prop === 'Read') {
                     rowInfo.setAttribute('class', `${prop}`)
                 }
                 card.appendChild(rowInfo);
@@ -69,7 +69,7 @@ function showBooks (library) {
         
         toggleButton.addEventListener('click', (e) => {
             let index = Array.prototype.indexOf.call(container.children, e.target.parentNode.parentNode);
-            let statusRead = e.target.parentNode.parentNode.querySelector('.read');
+            let statusRead = e.target.parentNode.parentNode.querySelector('.Read');
 
             if (statusRead.textContent === 'Readed') {
                 statusRead.textContent = 'Not readed';
