@@ -1,21 +1,21 @@
 const myLibrary = [];
-
-function Book (title, author, pages, read) {
-    this.Title = title; 
-    this.Author = author;
-    this.Pages = pages;
-    this.Read = read;
-}
-
-Book.prototype.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-}
-Book.prototype.changeStatus = function() {
-    if(this.Read === 'Readed'){
-        this.Read = 'Not readed';
+class Book {
+    constructor(title, author, pages, read){
+        this.Title = title; 
+        this.Author = author;
+        this.Pages = pages;
+        this.Read = read;    
     }
-    else {
-        this.Read = 'Readed';
+    info(){
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    }
+    changeStatus(){
+        if(this.Read === 'Readed'){
+            this.Read = 'Not readed';
+        }
+        else {
+            this.Read = 'Readed';
+        }    
     }
 }
 
@@ -25,8 +25,8 @@ function addBookToLibrary (title, author, pages, read) {
 }
 
 addBookToLibrary('Alice in Wonderland', 'Lewis Carroll', '96', 'Readed');
-
 const container = document.querySelector('#container');
+
 //////////////MAIN FUNCTION/////////////////////////////
 function showBooks (library) {
     resetContainerDiv(container);
